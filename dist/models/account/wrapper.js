@@ -274,7 +274,7 @@ class MarginfiAccountWrapper {
         const beginFlashLoanIx = await this.makeBeginFlashLoanIx(endIndex);
         const endFlashLoanIx = await this.makeEndFlashLoanIx(projectedActiveBalances);
         const ixs = [...beginFlashLoanIx.instructions, ...args.ixs, ...endFlashLoanIx.instructions];
-        // Use the provided recentBlockhash if available, otherwise fetch the latest one
+        // Use the provided recentBlockhash if available
         const recentBlockhash = args.recentBlockhash;
         if (!recentBlockhash) {
             throw new Error("Failed to obtain a recent blockhash.");

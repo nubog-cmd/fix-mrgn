@@ -1,7 +1,7 @@
 /// <reference types="node" />
 import { Amount, InstructionsWrapper } from "@mrgnlabs/mrgn-common";
 import { Address } from "@coral-xyz/anchor";
-import { AccountMeta, Commitment, PublicKey, TransactionInstruction, Signer, AddressLookupTableAccount, VersionedTransaction } from "@solana/web3.js";
+import { AccountMeta, Commitment, PublicKey, TransactionInstruction, Signer, AddressLookupTableAccount, VersionedTransaction, Blockhash } from "@solana/web3.js";
 import BigNumber from "bignumber.js";
 import { MarginfiClient, MarginfiGroup } from "../..";
 import { MarginfiAccount, MarginRequirementType, MarginfiAccountRaw } from "./pure";
@@ -15,7 +15,7 @@ export interface FlashLoanArgs {
     ixs: TransactionInstruction[];
     signers?: Signer[];
     addressLookupTableAccounts?: AddressLookupTableAccount[];
-    recentBlockhash?: string;
+    recentBlockhash?: Blockhash;
 }
 declare class MarginfiAccountWrapper {
     private readonly client;
