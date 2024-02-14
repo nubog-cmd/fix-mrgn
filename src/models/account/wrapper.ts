@@ -12,6 +12,7 @@ import {
   AddressLookupTableAccount,
   TransactionMessage,
   VersionedTransaction,
+  Blockhash,
 } from "@solana/web3.js";
 import BigNumber from "bignumber.js";
 import { MarginfiClient, MarginfiGroup } from "../..";
@@ -30,7 +31,7 @@ export interface FlashLoanArgs {
   ixs: TransactionInstruction[];
   signers?: Signer[];
   addressLookupTableAccounts?: AddressLookupTableAccount[];
-  recentBlockhash?: string; // Added
+  recentBlockhash?: Blockhash; // Added
 }
 
 class MarginfiAccountWrapper {
@@ -524,7 +525,7 @@ class MarginfiAccountWrapper {
 
     const ixs = [...beginFlashLoanIx.instructions, ...args.ixs, ...endFlashLoanIx.instructions];
 
-    // Use the provided recentBlockhash if available, otherwise fetch the latest one
+    // Use the provided recentBlockhash if available
     const recentBlockhash = args.recentBlockhash;
 
     if (!recentBlockhash) {
